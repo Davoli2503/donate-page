@@ -3,38 +3,83 @@
 <html lang="be">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Падтрымка DA VOLI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DA VOLI — Дапамога</title>
   <style>
-    body { font-family: sans-serif; padding: 2em; max-width: 700px; margin: auto; }
-    h1 { color: #333366; }
-    .donate-option { margin-bottom: 2em; padding: 1em; border: 1px solid #ccc; border-radius: 8px; }
-    .donate-option h2 { margin-top: 0; }
-    code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 4px; }
-    a { color: #004488; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+    .logo {
+      max-width: 200px;
+      margin: 30px auto;
+    }
+    .lang-switch {
+      margin: 20px;
+    }
+    .lang-switch button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .section {
+      margin: 20px auto;
+      max-width: 500px;
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    a {
+      color: #4fd1c5;
+    }
   </style>
 </head>
 <body>
-  <h1>Падтрымка DA VOLI</h1>
-  <p>Вы можаце падтрымаць нас любым зручным спосабам:</p>
-
-  <div class="donate-option">
-    <h2>Пераклад на польскі рахунак</h2>
-    <p><strong>IBAN:</strong> <code>PL86102049000000880236937995</code></p>
+  <img src="logo.png" alt="DA VOLI Logo" class="logo" />
+  <div class="lang-switch">
+    <button onclick="switchLang('be')">Беларуская</button>
+    <button onclick="switchLang('pl')">Polski</button>
+    <button onclick="switchLang('en')">English</button>
   </div>
 
-  <div class="donate-option">
-    <h2>Міжнародны пераклад</h2>
-    <p><strong>IBAN:</strong> <code>PL86102049000000880236937995</code><br/>
-    <strong>BIC/SWIFT:</strong> <code>BPKOPLPWXXX</code></p>
+  <div class="section" id="be">
+    <h2>Дапамажыце палітвязням</h2>
+    <p>Прызначэнне плацяжу: <strong>Ахвяраванне на дапамогу палітвязням</strong></p>
+    <p>Пераклад у Польшчы: <br><strong>PL86102049000000880236937995</strong></p>
+    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
+    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Перайсці ў PayPal</a></p>
   </div>
 
-  <div class="donate-option">
-    <h2>PayPal</h2>
-    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL" target="_blank">
-      paypal.me/DAVOLI2334
-    </a></p>
+  <div class="section" id="pl" style="display:none">
+    <h2>Wspomóż więźniów politycznych</h2>
+    <p>Tytuł przelewu: <strong>Darowizna na pomoc więźniom politycznym</strong></p>
+    <p>Przelew w Polsce: <br><strong>PL86102049000000880236937995</strong></p>
+    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
+    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Przejdź do PayPal</a></p>
   </div>
+
+  <div class="section" id="en" style="display:none">
+    <h2>Support political prisoners</h2>
+    <p>Payment purpose: <strong>Donation to help political prisoners</strong></p>
+    <p>Transfer in Poland: <br><strong>PL86102049000000880236937995</strong></p>
+    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
+    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Go to PayPal</a></p>
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      document.getElementById('be').style.display = 'none';
+      document.getElementById('pl').style.display = 'none';
+      document.getElementById('en').style.display = 'none';
+      document.getElementById(lang).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
