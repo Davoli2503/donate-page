@@ -1,85 +1,129 @@
-
 <!DOCTYPE html>
 <html lang="be">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DA VOLI — Дапамога</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Падтрымайце DAVOLI</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #000;
       color: #fff;
       text-align: center;
+      padding: 20px;
     }
     .logo {
       max-width: 200px;
-      margin: 30px auto;
+      margin-bottom: 20px;
     }
-    .lang-switch {
-      margin: 20px;
+    .lang-switcher {
+      margin-bottom: 20px;
     }
-    .lang-switch button {
-      background: #333;
-      color: white;
-      border: none;
-      padding: 8px 16px;
+    .lang-switcher button {
       margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #000;
       cursor: pointer;
     }
-    .section {
-      margin: 20px auto;
-      max-width: 500px;
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
+    .lang-switcher button:hover {
+      background-color: #ccc;
     }
-    a {
-      color: #4fd1c5;
+    .payment-methods {
+      margin-top: 30px;
+    }
+    .payment-method {
+      margin-bottom: 20px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #fff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a.button:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="DA VOLI Logo" class="logo" />
-  <div class="lang-switch">
+  <img src="logo.png" alt="DAVOLI Logo" class="logo">
+
+  <div class="lang-switcher">
     <button onclick="switchLang('be')">Беларуская</button>
     <button onclick="switchLang('pl')">Polski</button>
     <button onclick="switchLang('en')">English</button>
   </div>
 
-  <div class="section" id="be">
-    <h2>Дапамажыце палітвязням</h2>
-    <p>Прызначэнне плацяжу: <strong>Ахвяраванне на дапамогу палітвязням</strong></p>
-    <p>Пераклад у Польшчы: <br><strong>PL86102049000000880236937995</strong></p>
-    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
-    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Перайсці ў PayPal</a></p>
-  </div>
+  <h1 id="title">Падтрымайце праект DAVOLI</h1>
 
-  <div class="section" id="pl" style="display:none">
-    <h2>Wspomóż więźniów politycznych</h2>
-    <p>Tytuł przelewu: <strong>Darowizna na pomoc więźniom politycznym</strong></p>
-    <p>Przelew w Polsce: <br><strong>PL86102049000000880236937995</strong></p>
-    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
-    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Przejdź do PayPal</a></p>
-  </div>
+  <div class="payment-methods">
+    <div class="payment-method">
+      <h2 id="bank-title">Пераклад у польскі банк</h2>
+      <p>IBAN: PL86 1020 4900 0000 8802 3693 7995<br>BIC: BPKOPLPWXXX</p>
+      <a id="bank-link" class="button" href="#">Адкрыць у банку</a>
+    </div>
 
-  <div class="section" id="en" style="display:none">
-    <h2>Support political prisoners</h2>
-    <p>Payment purpose: <strong>Donation to help political prisoners</strong></p>
-    <p>Transfer in Poland: <br><strong>PL86102049000000880236937995</strong></p>
-    <p>BIC/SWIFT: <strong>BPKOPLPWXXX</strong></p>
-    <p><a href="https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL">Go to PayPal</a></p>
+    <div class="payment-method">
+      <h2 id="intl-title">Міжнародны пераклад</h2>
+      <p>IBAN: PL86 1020 4900 0000 8802 3693 7995<br>BIC: BPKOPLPWXXX</p>
+      <a id="intl-link" class="button" href="#">Адкрыць у банку</a>
+    </div>
+
+    <div class="payment-method">
+      <h2 id="paypal-title">PayPal</h2>
+      <a id="paypal-link" class="button" href="#">Перайсці ў PayPal</a>
+    </div>
   </div>
 
   <script>
+    const translations = {
+      be: {
+        title: "Падтрымайце праект DAVOLI",
+        bank: "Пераклад у польскі банк",
+        intl: "Міжнародны пераклад",
+        paypal: "PayPal",
+        bankLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Падтрымка%20праекта%20DAVOLI",
+        intlLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Падтрымка%20праекта%20DAVOLI",
+        paypalLink: "https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL&item_name=Падтрымка%20праекта%20DAVOLI"
+      },
+      pl: {
+        title: "Wspieraj projekt DAVOLI",
+        bank: "Przelew do polskiego banku",
+        intl: "Przelew międzynarodowy",
+        paypal: "PayPal",
+        bankLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Wsparcie%20projektu%20DAVOLI",
+        intlLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Wsparcie%20projektu%20DAVOLI",
+        paypalLink: "https://paypal.me/DAVOLI2334?country.x=PL&locale.x=pl_PL&item_name=Wsparcie%20projektu%20DAVOLI"
+      },
+      en: {
+        title: "Support the DAVOLI project",
+        bank: "Transfer to Polish bank",
+        intl: "International transfer",
+        paypal: "PayPal",
+        bankLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Support%20project%20DAVOLI",
+        intlLink: "bank://singlepaymentsepa?iban=PL86102049000000880236937995&bic=BPKOPLPWXXX&name=DAVOLI&msg=Support%20project%20DAVOLI",
+        paypalLink: "https://paypal.me/DAVOLI2334?country.x=PL&locale.x=en_US&item_name=Support%20project%20DAVOLI"
+      }
+    };
+
     function switchLang(lang) {
-      document.getElementById('be').style.display = 'none';
-      document.getElementById('pl').style.display = 'none';
-      document.getElementById('en').style.display = 'none';
-      document.getElementById(lang).style.display = 'block';
+      document.getElementById("title").innerText = translations[lang].title;
+      document.getElementById("bank-title").innerText = translations[lang].bank;
+      document.getElementById("intl-title").innerText = translations[lang].intl;
+      document.getElementById("paypal-title").innerText = translations[lang].paypal;
+      document.getElementById("bank-link").href = translations[lang].bankLink;
+      document.getElementById("intl-link").href = translations[lang].intlLink;
+      document.getElementById("paypal-link").href = translations[lang].paypalLink;
     }
+
+    // default language
+    switchLang('be');
   </script>
 </body>
 </html>
